@@ -2,28 +2,41 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class library {
-    private static List<Books> books;
+    private static  ArrayList<Books> books;
+    private ArrayList<Student > student;
 
-    public library (String Books, List<Books> books)
+    public library ( ArrayList<Books> books)
+
     {
-        this.books= books = new ArrayList<>();
+        library.books= new ArrayList<Books>(); 
     }
 
     public List<Books> getBooks(){
         return books;
     }
 
-    public static String checkAvailability(String S){
+    public static  int checkAvailability(String S,  ArrayList<Books> books){
 
-        for (Books books:  books) 
+        for (int i = 0; i < books.size(); i++) 
         {
-            if (books.getTitle().equals(S))
+            if (books.get(i).getTitle().equals(S))
              {
-                System.out.println(S);
-            
+                System.out.println(S + " is available");
+             return i;
         
             }
          }
-        return S;            
+        return -1;            
     }
+// method that counts books to be returned on a certain date 
+    public int  getReturndate(String bookreturnDate)
+    {
+        int count =0;
+        for (int i=0 ; i< student.size(); i++){
+            if(student.get(i).getBookReturnDate().equals(bookreturnDate))
+            count++;
+        }
+        return count;
+    }
+      
 }
